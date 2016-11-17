@@ -12,18 +12,20 @@ class CatsController < ApplicationController
 
   post '/' do
     @model = Cat.new
-    @model.name = params[:name]
-    @model.note = params[:note]
-    @model.image = params[:image]
+    payload = JSON.parse(request.body.read)
+    @model.name = payload["name"]
+    @model.note = payload["note"]
+    @model.image = payload["image"]
     @model.save
     @model.to_json
   end
 
-  patch '/:id' do
+  put '/:id' do
+    payload = JSON.parse(request.body.read)
     @model = Cat.find(params[:id])
-    @model.name = params[:name]
-    @model.note = params[:note]
-    @model.image = params[:image]
+    @model.name = payload["name"]
+    @model.note = payload["note"]
+    @model.image = payload["image"]
     @model.save
     @model.to_json
   end
