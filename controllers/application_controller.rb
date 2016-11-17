@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
 
   ActiveRecord::Base.establish_connection(
       :adapter => ENV['DB_ADAPTER'],
-      :database => ENV['DB_NAME']
+      :database => ENV['DB_NAME'],
       :host     => ENV['DB_HOST'],
       :username => ENV['DB_USER'],
       :password => ENV['DB_PW']
